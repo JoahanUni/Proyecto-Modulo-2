@@ -12,7 +12,7 @@ despues la debe mostrar al usuario.
 
 ○ Instrucciones de compilación (comandos uasm64 y GoLink).
 abri el cmd y cambie el directorio a la carpeta de la practica
-lo ensamle con uasm64 -win64 keygen_torres_joahan.asm
+lo ensamble con: uasm64 -win64 keygen_torres_joahan.asm
 después lo enlanze con link.exe porque golink no me funciona en mi laptop. link.exe keygen_torres_joahan.obj kernel32.lib /subsystem:console /entry:main /out:keygen_torres_joahan.exe
 
 ○ Capturas de pantalla del programa en ejecución.
