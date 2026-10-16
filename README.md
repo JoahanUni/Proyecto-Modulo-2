@@ -21,27 +21,27 @@ despues lo enlanze con link.exe keygen_torres_joahan.obj kernel32.lib /subsystem
 
 ○ Explicación del algoritmo de generación de llave.
 
-Primero se solicitan los los handle para imprimir en consola y poder escribir en teclado
-se mueve a RCX el handle de salida de la consola
-se manda a RDX la dirección de memoria donde inicia el texto 'Ingresa tu nombre de usuario: '.
-en r8 se mueve el tamaño del prompt y en r9 se le manda la direccion donde se almacena cuantos caracteres se escribieron
-se llama write console para mostrar el texto en consola
+Primero se solicitan los handle para imprimir en consola y poder escribir en teclado.
+Se mueve a RCX el handle de salida de la consola.
+Se manda a RDX la dirección de memoria donde inicia el texto 'Ingresa tu nombre de usuario: '.
+En R8 se mueve el tamaño del prompt y en R9 se le manda la dirección donde se almacena cuántos caracteres se escribieron.
+Se llama WriteConsole para mostrar el texto en consola.
 
-Se pausa el programa con readconsole para leer lo que escribio el usuario hasta que presione enter,
-la cadena se guarda en el buffer
-se valida que el usuario escribio algo con un cmp 2,si la cantidad de bytes escritos
-es menor o igual a 2 pasa al mensaje de error
-despues se omiten los 2 bytes del salto de linea
-se recorre caracter por caracter sumando su valor en ASCII en RAX y se guarda un acumulador en SUMA
+Se pausa el programa con ReadConsole para leer lo que escribió el usuario hasta que presione Enter, la cadena se guarda en el buffer.
+Se valida que el usuario escribió algo con un cmp 2; si la cantidad de bytes escritos es menor o igual a 2, pasa con un jmp al mensaje de error.
 
-se extraen los datos de 4 en 4 bits con una mascara AND
-se convierten a su caracter ASCII correspondiente y se guardan de derecha a izquierda en hex_buffer
+Después se omiten los 2 bytes del salto de línea.
+Se recorre carácter por carácter sumando su valor en ASCII en RAX y se guarda un acumulador en SUMA.
 
-para imprimir la llave se hacen 3 llamadas a write console
-una imprime 'Tu llave es: '
-otra el hex_buffer
-y la ultima un salto de linea
+Se extraen los datos de 4 en 4 bits con una máscara AND.
+Se convierten a su carácter ASCII correspondiente y se guardan de derecha a izquierda en hex_buffer.
 
-despues se ejecuta un jmp hacia la seccion de errores y cierre del programa
-en caso de no escribir nada al pedir el nombre al usuario aqui te manda y termina el programa
-y al mostrar la clave tambien el jmp te manda al exitprocess
+Para imprimir la llave se hacen 3 llamadas a WriteConsole:
+
+Una imprime 'Tu llave es: '
+
+Otra el hex_buffer
+
+Y la última un salto de línea
+
+Después de imprimir se utiliza un jmp al final del programa y finaliza
